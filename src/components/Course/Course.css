@@ -1,0 +1,7 @@
+.light-shadow {
+    box-shadow: var(--light-shadow);
+}
+
+.hover:hover {
+    box-shadow: var(--dark-shadow);
+}

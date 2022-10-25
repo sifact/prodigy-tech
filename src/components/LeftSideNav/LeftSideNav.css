@@ -1,0 +1,12 @@
+.left-nav a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 8px;
+    color: var(--footer);
+    padding-bottom: 2rem;
+    font-size: 18px;
+}
+
+.left-nav a:hover {
+    color: var(--footer);
+}
