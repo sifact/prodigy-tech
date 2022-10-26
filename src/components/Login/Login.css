@@ -1,0 +1,74 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    background-color: var(--clr-grey-10);
+    font-family: "Poppins", sans-serif;
+}
+
+.form__container input,
+.form__container button {
+    width: 100%;
+    padding: 0.5rem !important;
+    border-radius: 5px;
+    margin: 1rem 0 !important;
+    border: 2px solid var(--light);
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+button {
+    border: none;
+}
+input:focus {
+    outline: none;
+    border: 2px solid var(--clr-primary-8);
+}
+
+.form__title {
+    text-align: center;
+    color: var(--clr-primary-5);
+}
+.form__container {
+    border-top: 5px solid var(--clr-primary-4);
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-shadow: var(--light-shadow);
+    border-radius: 0.5rem;
+    padding: 2rem 3rem;
+    /* height: 300px; */
+    width: 500px;
+    transition: var(--transition);
+}
+.form__container:hover {
+    box-shadow: var(--dark-shadow);
+}
+
+.submit-btn {
+    background: var(--clr-primary-8);
+
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    /* border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius); */
+    cursor: pointer;
+    content: var(--clr-primary-5);
+    transition: var(--transition);
+    font-size: 0.85rem;
+}
+.submit-btn.hv:hover {
+    background: var(--clr-primary-5);
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}

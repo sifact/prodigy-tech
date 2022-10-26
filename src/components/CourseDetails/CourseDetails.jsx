@@ -62,7 +62,7 @@ const CourseDetails = () => {
 
                         <Link to={`/checkout/${id}`}>
                             <Button
-                                className="d-block w-100 my-3 button"
+                                className=" w-100 my-3 button"
                                 variant="outline-info"
                             >
                                 Checkout

@@ -2,6 +2,7 @@ import React from "react";
 import "./Checkout.css";
 import { Container } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
+import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 const Checkout = () => {
     const course = useLoaderData();
@@ -23,13 +24,26 @@ const Checkout = () => {
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">{details}</p>
-                            <p className="card-text">
+                            <h5 className="card-title">{name}</h5>
+                            <p className="card-text mb-0">
+                                {details.slice(0, 80) + "..."}
+                            </p>
+                            <p className="card-text mb-0">
                                 <small className="text-muted">
                                     {instructor}
                                 </small>
                             </p>
+                            <div className="d-flex align-items-center">
+                                <span className="me-3 pb-1 text-muted">
+                                    <FaStar className="text-warning" />
+                                    <FaStar className="text-warning" />
+                                    <FaStar className="text-warning" />
+                                    <FaStar className="text-warning" />
+
+                                    <FaStarHalfAlt className="text-warning" />
+                                </span>
+                                <span>{rating}</span>
+                            </div>
                         </div>
                     </div>
                 </div>

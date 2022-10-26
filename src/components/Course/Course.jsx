@@ -13,6 +13,7 @@ const Course = ({ course }) => {
             className="light-shadow hover"
             style={{
                 height: "500px",
+                // width: "300px",
                 border: "none",
             }}
         >
