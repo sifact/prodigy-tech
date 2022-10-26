@@ -38,8 +38,8 @@ const CourseDetails = () => {
             </div>
             <Container className="pt-5">
                 <h2 className="pb-3">Course overview</h2>
-                {overview.map((view) => (
-                    <OverView view={view} />
+                {overview.map((view, idx) => (
+                    <OverView key={idx} view={view} />
                 ))}
             </Container>
 

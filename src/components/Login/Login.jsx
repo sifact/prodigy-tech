@@ -1,16 +1,39 @@
 import React from "react";
 import { useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 import "./Login.css";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
+import Alert from "../Alert/Alert";
+import { useState } from "react";
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
+    const { signIn, providerLogin } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then((result) => {
+                const user = result.user;
+
+                console.log(user);
+            })
+            .catch((e) => console.log(e.message));
+    };
+
     const handleSignIn = (event) => {
         event.preventDefault();
+        setAlert({ show: false });
         const form = event.target;
 
         const email = form.email.value;
@@ -19,16 +42,24 @@ const Login = () => {
         signIn(email, password)
             .then((result) => {
                 const user = result.user;
+                form.reset();
+                setAlert({
+                    show: true,
+                    msg: "successfully logged in",
+                    type: "success",
+                });
+                navigate(from, { replace: true });
                 console.log(user);
             })
             .catch((e) => {
-                console.log("error: ", e);
+                setAlert({ show: true, msg: e.message, type: "danger" });
             });
     };
     return (
         <section className="login">
             <form onSubmit={handleSignIn} className="form__container">
                 <h1 className="form__title">Login</h1>
+                {alert.show && <Alert {...alert} />}
                 <div className="form__control">
                     <input name="email" type="email" placeholder="email" />
                 </div>
@@ -46,7 +77,11 @@ const Login = () => {
                 <small className="d-block text-center">
                     Log in with one of the following:
                 </small>
-                <button className="submit-btn bg-transparent" id="btn-submit">
+                <button
+                    onClick={handleGoogleSignIn}
+                    className="submit-btn bg-transparent"
+                    id="btn-submit"
+                >
                     <FaGoogle className="me-2" />
                     <span>Google</span>
                 </button>

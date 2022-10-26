@@ -15,19 +15,29 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    // Sign in with google
+    const providerLogin = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
+    };
 
     // Sign up new users
     const signUp = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
     // Sign in existing users
     const signIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     };
 
     // Sign out
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     };
 
@@ -36,6 +46,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log("insider auth state change", currentUser);
             setUser(currentUser);
+            setLoading(false);
         });
 
         return () => {
@@ -43,7 +54,7 @@ const AuthProvider = ({ children }) => {
         };
     }, []);
 
-    const authInfo = { signUp, signIn, user, logOut };
+    const authInfo = { signUp, signIn, user, logOut, providerLogin, loading };
 
     return (
         <div>

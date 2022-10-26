@@ -1,10 +1,13 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import Alert from "../Alert/Alert";
 import "./Register.css";
 
 const Register = () => {
+    const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
     const { signUp } = useContext(AuthContext);
 
     const handleRegistration = (event) => {
@@ -18,16 +21,24 @@ const Register = () => {
         signUp(email, password)
             .then((result) => {
                 const user = result.user;
+                form.reset();
+                setAlert({
+                    show: true,
+                    msg: "registration completed",
+                    type: "success",
+                });
                 console.log(user);
             })
             .catch((e) => {
                 console.log("error: ", e);
+                setAlert({ show: true, msg: e.message, type: "danger" });
             });
     };
     return (
         <section className="login">
             <form onSubmit={handleRegistration} className="form__container">
-                <h1 className="form__title">Registration Now</h1>
+                <h1 className="form__title">Sign up</h1>
+                {alert.show && <Alert {...alert} />}
 
                 <div className="form__control">
                     <input
@@ -55,7 +66,7 @@ const Register = () => {
                 </div>
 
                 <button className="submit-btn" id="btn-submit">
-                    Sing up
+                    Sign up
                 </button>
                 <small>
                     Already have an account? <Link to="/login">Log in</Link>

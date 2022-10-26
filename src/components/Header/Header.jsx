@@ -7,15 +7,25 @@ import { Link } from "react-router-dom";
 import { GiGraduateCap } from "react-icons/gi";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
-import { Button } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
+import { FaUser } from "react-icons/fa";
+
+import { useState } from "react";
+import { MdDarkMode } from "react-icons/md";
+import { BsFillSunFill } from "react-icons/bs";
 
 const Header = () => {
+    const [light, setLight] = useState(false);
     const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
             .then(() => {})
             .catch((error) => console.log(error));
+    };
+
+    const handleToggle = () => {
+        setLight(!light);
     };
     return (
         <Navbar
@@ -40,16 +50,47 @@ const Header = () => {
                         <Link to="/courses">Courses</Link>
                         <Link to="/faq">FAQ</Link>
                         <Link to="/blog">Blog</Link>
-
-                        {user?.uid ? (
-                            <Button onClick={handleLogOut} variant="success">
-                                Sign out
-                            </Button>
+                        {light ? (
+                            <Link onClick={handleToggle}>
+                                {" "}
+                                <MdDarkMode
+                                    style={{ height: "30px", width: "30px" }}
+                                />
+                            </Link>
                         ) : (
-                            <Link to="/login">Log in</Link>
+                            <Link onClick={handleToggle}>
+                                {" "}
+                                <BsFillSunFill
+                                    style={{ height: "30px", width: "30px" }}
+                                />
+                            </Link>
                         )}
-
-                        <Link to="/register">Sign up</Link>
+                        <Link>
+                            {user?.photoURL ? (
+                                <Image
+                                    style={{ height: "30px" }}
+                                    roundedCircle
+                                    src={user?.photoURL}
+                                />
+                            ) : (
+                                <FaUser />
+                            )}
+                        </Link>
+                        {user?.uid ? (
+                            <>
+                                <Button
+                                    onClick={handleLogOut}
+                                    variant="success"
+                                >
+                                    Sign out
+                                </Button>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/login">Log in</Link>
+                                <Link to="/register">Sign up</Link>
+                            </>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -19,7 +19,7 @@ const Courses = () => {
                     <Row className="g-3">
                         {courses.map((course) => (
                             <Col className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                <Course course={course} />
+                                <Course key={course.id} course={course} />
                             </Col>
                         ))}
                     </Row>
