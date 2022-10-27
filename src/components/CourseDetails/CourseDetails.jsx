@@ -7,6 +7,7 @@ import OverView from "../OverView/OverView";
 import Button from "react-bootstrap/Button";
 import Pdf from "react-to-pdf";
 import { BsFileEarmarkPdfFill } from "react-icons/bs";
+import Course from "../Course/Course";
 
 const ref = React.createRef();
 

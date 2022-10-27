@@ -3,9 +3,19 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
 import Course from "../Course/Course";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Courses = () => {
-    const courses = useLoaderData();
+    // const courses = useLoaderData();
+
+    const [courses, setCourses] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/courses")
+            .then((result) => result.json())
+            .then((data) => setCourses(data));
+    }, []);
 
     return (
         <Container className="my-5">
