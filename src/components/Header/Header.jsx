@@ -13,6 +13,7 @@ import { FaUser } from "react-icons/fa";
 import { useState } from "react";
 import { MdDarkMode } from "react-icons/md";
 import { BsFillSunFill } from "react-icons/bs";
+import ReactTooltip from "react-tooltip";
 
 const Header = () => {
     const [light, setLight] = useState(false);
@@ -65,25 +66,31 @@ const Header = () => {
                                 />
                             </Link>
                         )}
+
                         <Link>
                             {user?.photoURL ? (
-                                <Image
-                                    style={{ height: "30px" }}
-                                    roundedCircle
-                                    src={user?.photoURL}
-                                />
+                                <>
+                                    <Image
+                                        data-tip={user?.displayName}
+                                        style={{ height: "30px" }}
+                                        roundedCircle
+                                        src={user?.photoURL}
+                                    />
+                                    <ReactTooltip />
+                                </>
                             ) : (
-                                <FaUser />
+                                ""
                             )}
                         </Link>
+
                         {user?.uid ? (
                             <>
-                                <Button
+                                <button
                                     onClick={handleLogOut}
-                                    variant="success"
+                                    className="button ms-2"
                                 >
                                     Sign out
-                                </Button>
+                                </button>
                             </>
                         ) : (
                             <>
