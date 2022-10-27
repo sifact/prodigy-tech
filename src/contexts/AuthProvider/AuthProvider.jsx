@@ -23,6 +23,12 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider);
     };
 
+    // Sign in with github
+    const githubLogin = (githubProvider) => {
+        setLoading(true);
+        return signInWithPopup(auth, githubProvider);
+    };
+
     // Sign up new users
     const signUp = (email, password) => {
         setLoading(true);
@@ -54,7 +60,15 @@ const AuthProvider = ({ children }) => {
         };
     }, []);
 
-    const authInfo = { signUp, signIn, user, logOut, providerLogin, loading };
+    const authInfo = {
+        signUp,
+        signIn,
+        user,
+        logOut,
+        providerLogin,
+        loading,
+        githubLogin,
+    };
 
     return (
         <div>

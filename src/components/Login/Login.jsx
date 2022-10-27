@@ -6,13 +6,13 @@ import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 import "./Login.css";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import Alert from "../Alert/Alert";
 import { useState } from "react";
 
 const Login = () => {
     const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
-    const { signIn, providerLogin } = useContext(AuthContext);
+    const { signIn, providerLogin, githubLogin } = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -20,12 +20,22 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then((result) => {
                 const user = result.user;
 
+                console.log(user);
+            })
+            .catch((e) => console.log(e.message));
+    };
+
+    const handleGithubSignIn = () => {
+        githubLogin(githubProvider)
+            .then((result) => {
+                const user = result.user;
                 console.log(user);
             })
             .catch((e) => console.log(e.message));
@@ -85,7 +95,11 @@ const Login = () => {
                     <FaGoogle className="me-2" />
                     <span>Google</span>
                 </button>
-                <button className="submit-btn bg-transparent" id="btn-submit">
+                <button
+                    onClick={handleGithubSignIn}
+                    className="submit-btn bg-transparent"
+                    id="btn-submit"
+                >
                     <FaGithub className="me-2" />
                     <span>Github</span>
                 </button>
