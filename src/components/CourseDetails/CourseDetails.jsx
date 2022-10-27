@@ -5,6 +5,10 @@ import { FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { Card, Container } from "react-bootstrap";
 import OverView from "../OverView/OverView";
 import Button from "react-bootstrap/Button";
+import Pdf from "react-to-pdf";
+import { BsFileEarmarkPdfFill } from "react-icons/bs";
+
+const ref = React.createRef();
 
 const CourseDetails = () => {
     const course = useLoaderData();
@@ -17,6 +21,21 @@ const CourseDetails = () => {
             <div className="top py-3">
                 <Container>
                     <div className="course__content">
+                        {/* Generate pdf */}
+                        <Pdf targetRef={ref} filename="course-overview.pdf">
+                            {({ toPdf }) => (
+                                <button onClick={toPdf} className="button">
+                                    <BsFileEarmarkPdfFill
+                                        className="me-1 pb-1"
+                                        style={{
+                                            height: "25px",
+                                            width: "25px",
+                                        }}
+                                    />
+                                    <span>Get pdf</span>
+                                </button>
+                            )}
+                        </Pdf>
                         <h1 className="w-50">{name}</h1>
                         <p className="w-50">{details}</p>
                         <div className="d-flex align-items-center">
@@ -36,7 +55,7 @@ const CourseDetails = () => {
                     </div>
                 </Container>
             </div>
-            <Container className="pt-5">
+            <Container ref={ref} className="pt-5">
                 <h2 className="pb-3">Course overview</h2>
                 {overview.map((view, idx) => (
                     <OverView key={idx} view={view} />
@@ -47,7 +66,7 @@ const CourseDetails = () => {
                 <Card
                     className="light-shadow hover card"
                     style={{
-                        height: "450px",
+                        height: "500px",
                         width: "300px",
                         border: "none",
                     }}
@@ -61,12 +80,9 @@ const CourseDetails = () => {
                         <span className="fw-bolder fs-3">{price}</span>
 
                         <Link to={`/checkout/${id}`}>
-                            <Button
-                                className=" w-100 my-3 button"
-                                variant="outline-info"
-                            >
-                                Checkout
-                            </Button>
+                            <button className=" w-100 my-3 button">
+                                Get Premium
+                            </button>
                         </Link>
 
                         <small className="d-block">

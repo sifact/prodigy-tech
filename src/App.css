@@ -45,3 +45,17 @@ body {
     letter-spacing: 1px;
     font-size: 0.85rem;
 }
+
+.button {
+    display: inline-block;
+    background-color: var(--clr-primary-6);
+    color: var(--pure);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.2rem;
+    font-weight: 500;
+    transition: 0.3s all ease;
+}
+
+.button:hover {
+    background-color: var(--clr-primary-4);
+}
