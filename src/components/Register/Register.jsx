@@ -9,12 +9,12 @@ import "./Register.css";
 
 const Register = () => {
     const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
-    const { signUp } = useContext(AuthContext);
+    const { signUp, updateUserProfile } = useContext(AuthContext);
 
     const handleRegistration = (event) => {
         event.preventDefault();
         const form = event.target;
-        const fullName = form.fullName.value;
+        const name = form.fullName.value;
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
@@ -29,12 +29,24 @@ const Register = () => {
                     type: "success",
                 });
                 console.log(user);
+                handleUpdateUserProfile(name, photoURL);
             })
             .catch((e) => {
                 console.log("error: ", e);
                 setAlert({ show: true, msg: e.message, type: "danger" });
             });
     };
+
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL,
+        };
+        updateUserProfile(profile)
+            .then(() => {})
+            .catch((e) => console.error(e));
+    };
+
     return (
         <Container className="d-flex justify-content-center align-items-center mt-5">
             <section className="login">

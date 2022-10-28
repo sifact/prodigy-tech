@@ -6,6 +6,7 @@ import {
     signInWithEmailAndPassword,
     signInWithPopup,
     signOut,
+    updateProfile,
 } from "firebase/auth";
 
 export const AuthContext = createContext();
@@ -47,6 +48,10 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     };
 
+    // update user profile
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile);
+    };
     // fetch user data from firebase
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -69,6 +74,7 @@ const AuthProvider = ({ children }) => {
         providerLogin,
 
         githubLogin,
+        updateUserProfile,
     };
 
     return (
