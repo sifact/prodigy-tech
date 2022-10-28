@@ -8,3 +8,15 @@
 .nav a:hover {
     color: var(--clr-primary-6);
 }
+
+a {
+    text-decoration: none;
+    padding: 8px;
+    /* color: #ffffff8c; */
+    color: var(--footer);
+    transition: 0.3s all ease;
+}
+
+a:hover {
+    color: var(--clr-primary-6);
+}

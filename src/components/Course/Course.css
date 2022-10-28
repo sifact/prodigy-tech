@@ -5,3 +5,15 @@
 .hover:hover {
     box-shadow: var(--dark-shadow);
 }
+
+.style a {
+    text-decoration: none;
+    padding: 8px;
+    /* color: #ffffff8c; */
+    color: var(--footer);
+    transition: 0.3s all ease;
+}
+
+.style a:hover {
+    color: var(--clr-primary-6);
+}

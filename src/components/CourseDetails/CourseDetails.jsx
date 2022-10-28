@@ -80,8 +80,8 @@ const CourseDetails = () => {
 
                         <span className="fw-bolder fs-3">{price}</span>
 
-                        <Link to={`/checkout/${id}`}>
-                            <button className=" w-100 my-3 button">
+                        <Link className="p-0" to={`/checkout/${id}`}>
+                            <button className="w-100 my-3 button">
                                 Get Premium
                             </button>
                         </Link>

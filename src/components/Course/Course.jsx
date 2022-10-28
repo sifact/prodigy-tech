@@ -4,15 +4,16 @@ import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Course = ({ course }) => {
-    const { name, img, details, instructor, price, rating } = course;
+    const { name, img, details, instructor, price, rating, id } = course;
 
     return (
         <Card
             className="light-shadow hover"
             style={{
-                height: "500px",
+                height: "450px",
                 // width: "300px",
                 border: "none",
             }}
@@ -20,7 +21,10 @@ const Course = ({ course }) => {
             <Card.Img variant="top" src={img} />
             <Card.Body>
                 <Card.Title className="fw-bolder fs-5">{name}</Card.Title>
-                <Card.Text className="mb-1">{details}</Card.Text>
+                <Card.Text className="mb-1 style">
+                    {`${details.slice(0, 50)}... `}{" "}
+                    <Link to={`/course/${course.id}`}>See more</Link>
+                </Card.Text>
                 <p
                     className="mb-0 text-dim"
                     style={{ color: "var(--ternary)" }}

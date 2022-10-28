@@ -3,7 +3,7 @@ import "./Header.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { GiGraduateCap } from "react-icons/gi";
 import { useContext } from "react";
 // import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
@@ -40,6 +40,12 @@ const Header = () => {
             .then((data) => setCourses(data));
     }, []);
 
+    let activeStyle = {
+        textDecoration: "underline",
+    };
+
+    // let activeClassName = "underline";
+
     return (
         <Navbar
             className="p-3 light-shadow "
@@ -51,35 +57,72 @@ const Header = () => {
             <Container>
                 <Navbar.Brand href="#home">
                     <GiGraduateCap
-                        className="me-2"
-                        style={{ width: "40px", height: "40px" }}
+                        className="me-2 pb-1"
+                        style={{
+                            width: "40px",
+                            height: "40px",
+                            color: "var(--clr-primary-6)",
+                        }}
                     />
-                    <span className="fw-bolder fs-3">Prodigy Tech</span>
+                    <span className=" fw-bolder fs-3">
+                        <span style={{ color: "var(--clr-primary-6)" }}>
+                            Prodigy
+                        </span>{" "}
+                        Tech
+                    </span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto nav">
-                        <Link to="/">Home</Link>
-                        <Link to="/courses">Courses</Link>
-                        <Link to="/faq">FAQ</Link>
-                        <Link to="/blog">Blog</Link>
+                        <NavLink
+                            to="/"
+                            style={({ isActive }) =>
+                                isActive ? activeStyle : undefined
+                            }
+                        >
+                            Home
+                        </NavLink>
+                        <NavLink
+                            style={({ isActive }) =>
+                                isActive ? activeStyle : undefined
+                            }
+                            to="/courses"
+                        >
+                            Courses
+                        </NavLink>
+                        <NavLink
+                            style={({ isActive }) =>
+                                isActive ? activeStyle : undefined
+                            }
+                            to="/faq"
+                        >
+                            FAQ
+                        </NavLink>
+                        <NavLink
+                            style={({ isActive }) =>
+                                isActive ? activeStyle : undefined
+                            }
+                            to="/blog"
+                        >
+                            Blog
+                        </NavLink>
                         {light ? (
-                            <Link onClick={handleToggle}>
+                            <NavLink onClick={handleToggle}>
                                 {" "}
                                 <MdDarkMode
                                     style={{ height: "30px", width: "30px" }}
                                 />
-                            </Link>
+                            </NavLink>
                         ) : (
-                            <Link onClick={handleToggle}>
+                            <NavLink onClick={handleToggle}>
                                 {" "}
                                 <BsFillSunFill
                                     style={{ height: "30px", width: "30px" }}
                                 />
-                            </Link>
+                            </NavLink>
                         )}
 
-                        <Link>
+                        <NavLink>
                             {user?.photoURL ? (
                                 <>
                                     <Image
@@ -93,7 +136,7 @@ const Header = () => {
                             ) : (
                                 ""
                             )}
-                        </Link>
+                        </NavLink>
 
                         {user?.uid ? (
                             <>
@@ -106,8 +149,8 @@ const Header = () => {
                             </>
                         ) : (
                             <>
-                                <Link to="/login">Log in</Link>
-                                <Link to="/register">Sign up</Link>
+                                <NavLink to="/login">Log in</NavLink>
+                                <NavLink to="/register">Sign up</NavLink>
                             </>
                         )}
                     </Nav>

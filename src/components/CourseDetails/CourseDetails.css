@@ -1,5 +1,7 @@
 section div.top {
     background: var(--pure);
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 87%, 0 100%);
 }
 
 section.course__details {
@@ -42,7 +44,7 @@ a {
         height: 1200px;
     }
     div.card__absolute .card {
-        top: 39rem;
+        top: 42rem;
         left: 6rem;
     }
 }

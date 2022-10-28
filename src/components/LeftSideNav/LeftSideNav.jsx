@@ -4,7 +4,7 @@ import "./LeftSideNav.css";
 
 const LeftSideNav = ({ course }) => {
     return (
-        <div className="left-nav">
+        <div className="left-nav style">
             <Link to={`/course/${course.id}`}>{course.name}</Link>
         </div>
     );
