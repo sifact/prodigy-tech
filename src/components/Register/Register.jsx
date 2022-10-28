@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
+import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import Alert from "../Alert/Alert";
@@ -35,44 +36,46 @@ const Register = () => {
             });
     };
     return (
-        <section className="login">
-            <form onSubmit={handleRegistration} className="form__container">
-                <h1 className="form__title">Sign up</h1>
-                {alert.show && <Alert {...alert} />}
+        <Container className="d-flex justify-content-center align-items-center mt-5">
+            <section className="login">
+                <form onSubmit={handleRegistration} className="form__container">
+                    <h1 className="form__title">Sign up</h1>
+                    {alert.show && <Alert {...alert} />}
 
-                <div className="form__control">
-                    <input
-                        name="fullName"
-                        type="text"
-                        placeholder="full name"
-                    />
-                </div>
-                <div className="form__control">
-                    <input
-                        name="photoURL"
-                        type="text"
-                        placeholder="photo url"
-                    />
-                </div>
-                <div className="form__control">
-                    <input name="email" type="email" placeholder="email" />
-                </div>
-                <div className="form__control">
-                    <input
-                        name="password"
-                        type="password"
-                        placeholder="password"
-                    />
-                </div>
+                    <div className="form__control">
+                        <input
+                            name="fullName"
+                            type="text"
+                            placeholder="full name"
+                        />
+                    </div>
+                    <div className="form__control">
+                        <input
+                            name="photoURL"
+                            type="text"
+                            placeholder="photo url"
+                        />
+                    </div>
+                    <div className="form__control">
+                        <input name="email" type="email" placeholder="email" />
+                    </div>
+                    <div className="form__control">
+                        <input
+                            name="password"
+                            type="password"
+                            placeholder="password"
+                        />
+                    </div>
 
-                <button className="submit-btn" id="btn-submit">
-                    Sign up
-                </button>
-                <small>
-                    Already have an account? <Link to="/login">Log in</Link>
-                </small>
-            </form>
-        </section>
+                    <button className="submit-btn" id="btn-submit">
+                        Sign up
+                    </button>
+                    <small>
+                        Already have an account? <Link to="/login">Log in</Link>
+                    </small>
+                </form>
+            </section>
+        </Container>
     );
 };
 

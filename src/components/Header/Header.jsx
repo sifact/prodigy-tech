@@ -15,9 +15,12 @@ import { MdDarkMode } from "react-icons/md";
 import { BsFillSunFill } from "react-icons/bs";
 import ReactTooltip from "react-tooltip";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import LeftSideNav from "../LeftSideNav/LeftSideNav";
+import { useEffect } from "react";
 
 const Header = () => {
     const [light, setLight] = useState(false);
+    const [courses, setCourses] = useState([]);
 
     const { user, logOut } = useContext(AuthContext);
 
@@ -30,13 +33,20 @@ const Header = () => {
     const handleToggle = () => {
         setLight(!light);
     };
+
+    useEffect(() => {
+        fetch("https://assignment-server-opal.vercel.app/courses")
+            .then((result) => result.json())
+            .then((data) => setCourses(data));
+    }, []);
+
     return (
         <Navbar
-            className="p-3"
+            className="p-3 light-shadow "
             collapseOnSelect
             expand="lg"
-            bg="dark"
-            variant="dark"
+            bg="light"
+            variant="light"
         >
             <Container>
                 <Navbar.Brand href="#home">
@@ -89,7 +99,7 @@ const Header = () => {
                             <>
                                 <button
                                     onClick={handleLogOut}
-                                    className="button ms-2"
+                                    className="button ms-2 "
                                 >
                                     Sign out
                                 </button>
@@ -101,6 +111,11 @@ const Header = () => {
                             </>
                         )}
                     </Nav>
+                    <div className="d-lg-none">
+                        {courses.map((course) => (
+                            <LeftSideNav course={course} />
+                        ))}
+                    </div>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

@@ -37,8 +37,8 @@ const CourseDetails = () => {
                                 </button>
                             )}
                         </Pdf>
-                        <h1 className="w-50">{name}</h1>
-                        <p className="w-50">{details}</p>
+                        <h1 className="checkout-h">{name}</h1>
+                        <p className="checkout-p">{details}</p>
                         <div className="d-flex align-items-center">
                             <span className="me-3 pb-1">
                                 <FaStar className="text-warning" />

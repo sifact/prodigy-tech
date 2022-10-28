@@ -19,7 +19,8 @@ export const router = createBrowserRouter([
             {
                 path: "/courses",
                 element: <Courses />,
-                // loader: () => fetch("https://assignment-server-opal.vercel.app/courses"),
+                loader: () =>
+                    fetch("https://assignment-server-opal.vercel.app/courses"),
             },
             {
                 path: "/course/:id",

@@ -1,9 +1,10 @@
 .nav a {
     text-decoration: none;
     padding: 8px;
-    color: #ffffff8c;
+    /* color: #ffffff8c; */
+    color: var(--footer);
 }
 
 .nav a:hover {
-    color: white;
+    color: var(--clr-primary-6);
 }

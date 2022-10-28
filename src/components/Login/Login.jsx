@@ -9,6 +9,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import Alert from "../Alert/Alert";
 import { useState } from "react";
+import { Container } from "react-bootstrap";
 
 const Login = () => {
     const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
@@ -70,51 +71,57 @@ const Login = () => {
             });
     };
     return (
-        <section className="login">
-            <div className="form form__container">
-                <form onSubmit={handleSignIn} className="">
-                    <h1 className="form__title">Login</h1>
-                    {alert.show && <Alert {...alert} />}
-                    <div className="form__control">
-                        <input name="email" type="email" placeholder="email" />
-                    </div>
-                    <div className="form__control">
-                        <input
-                            name="password"
-                            type="password"
-                            placeholder="password"
-                        />
-                    </div>
+        <Container className="d-flex justify-content-center align-items-center mt-5">
+            <section className="login">
+                <div className="form form__container">
+                    <form onSubmit={handleSignIn} className="">
+                        <h1 className="form__title">Login</h1>
+                        {alert.show && <Alert {...alert} />}
+                        <div className="form__control">
+                            <input
+                                name="email"
+                                type="email"
+                                placeholder="email"
+                            />
+                        </div>
+                        <div className="form__control">
+                            <input
+                                name="password"
+                                type="password"
+                                placeholder="password"
+                            />
+                        </div>
 
-                    <button className="submit-btn hv" id="btn-submit">
-                        Log in
+                        <button className="submit-btn hv" id="btn-submit">
+                            Log in
+                        </button>
+                    </form>
+                    <small className="d-block text-center">
+                        Log in with one of the following:
+                    </small>
+                    <button
+                        onClick={handleGoogleSignIn}
+                        className="submit-btn button"
+                        id="btn-submit"
+                    >
+                        <FaGoogle className="me-2" />
+                        <span>Google</span>
                     </button>
-                </form>
-                <small className="d-block text-center">
-                    Log in with one of the following:
-                </small>
-                <button
-                    onClick={handleGoogleSignIn}
-                    className="submit-btn button"
-                    id="btn-submit"
-                >
-                    <FaGoogle className="me-2" />
-                    <span>Google</span>
-                </button>
-                <button
-                    onClick={handleGithubSignIn}
-                    className="submit-btn button"
-                    id="btn-submit"
-                >
-                    <FaGithub className="me-2" />
-                    <span>Github</span>
-                </button>
-                <small>
-                    New to Prodigy Tech{" "}
-                    <Link to="/register">Create a New Account</Link>
-                </small>
-            </div>
-        </section>
+                    <button
+                        onClick={handleGithubSignIn}
+                        className="submit-btn button"
+                        id="btn-submit"
+                    >
+                        <FaGithub className="me-2" />
+                        <span>Github</span>
+                    </button>
+                    <small>
+                        New to Prodigy Tech{" "}
+                        <Link to="/register">Create a New Account</Link>
+                    </small>
+                </div>
+            </section>
+        </Container>
     );
 };
 

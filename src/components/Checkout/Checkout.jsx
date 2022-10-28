@@ -23,12 +23,9 @@ const Checkout = () => {
 
     return (
         <>
-            <Container className="my-5 d-flex  justify-content-around">
-                <div
-                    className="card mb-3"
-                    style={{ width: "calc(231.33px + 462.66px)" }}
-                >
-                    <div className="row g-0">
+            <Container className="my-5 d-flex  justify-content-around premium__container">
+                <div className="card mb-3 premium-card">
+                    <div className="row g-0  ">
                         <div className="col-md-4">
                             <img
                                 src={img}
@@ -64,15 +61,14 @@ const Checkout = () => {
                 </div>
                 <div className="checkout">
                     <h1 className="mb-5">Price: {price}</h1>
-                    <button className="button w-100">Checkout</button>
+                    <button className="button btn-sm">Checkout</button>
                 </div>
             </Container>
             <Container>
-                <Row className="g-3">
-                    <h3>You may also like:</h3>
-
+                <h3>You may also like:</h3>
+                <Row className="g-3 d-grid courses__wrapper special">
                     {courses.map((course) => (
-                        <Col className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <Col className="">
                             <Course key={course.id} course={course} />
                         </Col>
                     ))}

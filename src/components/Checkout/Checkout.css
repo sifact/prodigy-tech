@@ -1,3 +1,61 @@
 .height {
     height: calc(100vh - 89px);
 }
+
+.premium-card {
+    width: 700px;
+}
+
+.btn-sm {
+    width: 100%;
+}
+.special {
+    grid-template-columns: repeat(4, 1fr);
+}
+@media screen and (max-width: 992px) {
+    .premium__container {
+        flex-direction: column;
+        row-gap: 1rem;
+    }
+
+    .btn-sm {
+        width: 10rem !important;
+    }
+    .special {
+        grid-template-columns: repeat(3 1fr);
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .special {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* For medium devices */
+@media screen and (max-width: 768px) {
+    .premium-card {
+        width: 300px !important;
+        height: 450px !important;
+    }
+    .special {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .special {
+        grid-template-columns: repeat(1, 300px);
+    }
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+    .special {
+        grid-template-columns: repeat(1, 250px);
+    }
+
+    .premium-card {
+        width: 250px !important;
+        height: 450px !important;
+    }
+}

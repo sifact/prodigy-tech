@@ -5,30 +5,23 @@ import Course from "../Course/Course";
 import LeftSideNav from "../LeftSideNav/LeftSideNav";
 import { useState } from "react";
 import { useEffect } from "react";
+import "./Courses.css";
 
 const Courses = () => {
-    // const courses = useLoaderData();
-
-    const [courses, setCourses] = useState([]);
-
-    useEffect(() => {
-        fetch("https://assignment-server-opal.vercel.app/courses")
-            .then((result) => result.json())
-            .then((data) => setCourses(data));
-    }, []);
+    const courses = useLoaderData();
 
     return (
         <Container className="my-5">
             <Row>
-                <Col lg="3" className="border-1">
+                <Col lg="3" className="d-none d-lg-block">
                     {courses.map((course) => (
                         <LeftSideNav course={course} />
                     ))}
                 </Col>
                 <Col lg="9" className="border-2">
-                    <Row className="g-3">
+                    <Row className="g-3 d-grid courses__wrapper">
                         {courses.map((course) => (
-                            <Col className="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                            <Col>
                                 <Course key={course.id} course={course} />
                             </Col>
                         ))}

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px);
+    height: 500px;
     background-color: var(--clr-grey-10);
     font-family: "Poppins", sans-serif;
 }
@@ -39,8 +39,8 @@ input:focus {
     box-shadow: var(--light-shadow);
     border-radius: 0.5rem;
     padding: 2rem 3rem;
-    /* height: 300px; */
-    width: 500px;
+
+    width: 450px;
     transition: var(--transition);
 }
 .form__container:hover {
@@ -71,4 +71,20 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 576px) {
+    .login {
+        width: 330px;
+    }
+    .form__container {
+        padding: 1rem;
+    }
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+    .login {
+        width: 250px;
+    }
 }
