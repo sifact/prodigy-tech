@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBZfJvJ_ZrFXnMXzCuhQCqxD2oSO595s7w",
-    authDomain: "prodigy-tech.firebaseapp.com",
-    projectId: "prodigy-tech",
-    storageBucket: "prodigy-tech.appspot.com",
-    messagingSenderId: "791226142563",
-    appId: "1:791226142563:web:bdacba3a0aa577c156cd56",
+    apiKey: import.meta.env.VITE_APP_apiKey,
+    authDomain: import.meta.env.VITE_APP_authDomain,
+    projectId: import.meta.env.VITE_APP_projectId,
+    storageBucket: import.meta.env.VITE_APP_storageBucket,
+    messagingSenderId: import.meta.env.VITE_APP_messagingSenderId,
+    appId: import.meta.env.VITE_APP_appId,
 };
 
 // Initialize Firebase
