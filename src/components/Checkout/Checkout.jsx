@@ -16,7 +16,7 @@ const Checkout = () => {
     const { img, name, rating, instructor, details, price } = course;
 
     useEffect(() => {
-        fetch("http://localhost:5000/courses")
+        fetch("https://assignment-server-opal.vercel.app/courses")
             .then((result) => result.json())
             .then((data) => setCourses(data));
     }, []);

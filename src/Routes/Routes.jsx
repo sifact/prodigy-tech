@@ -19,13 +19,15 @@ export const router = createBrowserRouter([
             {
                 path: "/courses",
                 element: <Courses />,
-                // loader: () => fetch("http://localhost:5000/courses"),
+                // loader: () => fetch("https://assignment-server-opal.vercel.app/courses"),
             },
             {
                 path: "/course/:id",
                 element: <CourseDetails />,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/courses/${params.id}`),
+                    fetch(
+                        `https://assignment-server-opal.vercel.app/courses/${params.id}`
+                    ),
             },
             { path: "/faq", element: <FAQ /> },
             { path: "/blog", element: <Blog /> },
@@ -37,7 +39,9 @@ export const router = createBrowserRouter([
                     </PrivateRoutes>
                 ),
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/courses/${params.id}`),
+                    fetch(
+                        `https://assignment-server-opal.vercel.app/courses/${params.id}`
+                    ),
             },
             {
                 path: "/login",

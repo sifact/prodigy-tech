@@ -14,8 +14,8 @@ import app from "../../firebase/firebase.config";
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState(null);
 
     // Sign in with google
     const providerLogin = (provider) => {
@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
     // fetch user data from firebase
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log("insider auth state change", currentUser);
+            console.log("inside auth state change", currentUser);
             setUser(currentUser);
             setLoading(false);
         });
@@ -62,11 +62,12 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         signUp,
+        loading,
         signIn,
         user,
         logOut,
         providerLogin,
-        loading,
+
         githubLogin,
     };
 

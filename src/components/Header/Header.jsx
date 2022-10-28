@@ -6,17 +6,19 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { GiGraduateCap } from "react-icons/gi";
 import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
-import { Button, Image } from "react-bootstrap";
+// import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { Button, Image, Spinner } from "react-bootstrap";
 import { FaUser } from "react-icons/fa";
 
 import { useState } from "react";
 import { MdDarkMode } from "react-icons/md";
 import { BsFillSunFill } from "react-icons/bs";
 import ReactTooltip from "react-tooltip";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
     const [light, setLight] = useState(false);
+
     const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {

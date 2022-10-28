@@ -12,7 +12,7 @@ const Courses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/courses")
+        fetch("https://assignment-server-opal.vercel.app/courses")
             .then((result) => result.json())
             .then((data) => setCourses(data));
     }, []);
