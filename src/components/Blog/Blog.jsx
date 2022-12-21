@@ -15,7 +15,7 @@ const Blog = () => {
                             a browser has JavaScript code that communicates with
                             a backend, and the backend is in a different
                             "origin" than the frontend.
-                            <h1></h1>
+                            <div className="space"></div>
                             For security reasons, browsers restrict cross-origin
                             HTTP requests initiated from scripts. For example,
                             XMLHttpRequest and the Fetch API follow the
@@ -70,7 +70,7 @@ const Blog = () => {
                             not logged in the user is redirected to the /login
                             page with the return url passed in the location
                             state property.
-                            <div className="space"></div>
+                            <p className="space"></p>
                             It uses useLocation() hook to get location and
                             useNavigate hook to navigate to expected page.
                         </p>
@@ -87,8 +87,10 @@ const Blog = () => {
                             create server-side web applications, and it is
                             perfect for data-intensive applications since it
                             uses an asynchronous, event-driven model.
-                            <div className="space"></div>
-                            <h1>How does node work?</h1>
+                        </p>
+                        <div className="space"></div>
+                        <h1>How does node work?</h1>
+                        <p>
                             Node.js accepts the request from the clients and
                             sends the response, while working with the request
                             node.js handles them with a single thread. To

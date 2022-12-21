@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import Alert from "../Alert/Alert";
 import "./Register.css";
@@ -10,6 +10,8 @@ import "./Register.css";
 const Register = () => {
     const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
     const { signUp, updateUserProfile } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleRegistration = (event) => {
         event.preventDefault();
@@ -30,6 +32,7 @@ const Register = () => {
                 });
                 console.log(user);
                 handleUpdateUserProfile(name, photoURL);
+                navigate("/");
             })
             .catch((e) => {
                 console.log("error: ", e);
